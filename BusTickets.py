@@ -4,8 +4,8 @@ CSV_doc="mobile_products.csv"
 
 # Load data from CSV
 def load_data():
-    with open (CSV_doc) as file:
-        reader= csv.DictReader(file)
+    with open(CSV_doc) as file:
+        reader=csv.DictReader(file)
         return list(reader)
 # save data in csv
 
@@ -135,7 +135,7 @@ def admin_interface(data):
 
     new_price_pence = int(new_price_pounds * 100) # convert new price from pound to pence
     
-    data[idx] ["topup_price_in_pence"] = str(new_price_pence)
+    data[idx]["topup_price_in_pence"] = str(new_price_pence)
     print("Pice updated!")
     save_data(data)
     
@@ -156,7 +156,7 @@ def main():
             customer_interface(data)  #go to customer interface
         elif choice == "2": #go to admin interface
             password = input("Ender admin passwors: ")
-            if  password == "admin123":  #admn password
+            if  password == "admin123":  #admin password
                 admin_interface(data)
             else: 
                 print("Invalid password.") # invalid password
