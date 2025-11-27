@@ -30,6 +30,15 @@ User will have a choice:
  after bought ticket customer will recive message @ ticket purchased successfully! thank you! and will back to start - main menu. 
  
 
+ # Case 2 - admin interface
+ On the start user will have options to choose between client and admin. 
+ If he ask about admin then will need provide password. 
+ Password is 'admin123' - will create new document with this password and add it to my github, to be able to open and check the password. 
+ Admin will recive opion to change a ticket prices. This changes will save in excel data document. 
+ He need provide price in pounds so i will create function to calculate it in pence and add to document. 
+ After admin will recive message "Price is change! thank you". 
+
+
  
  
  
