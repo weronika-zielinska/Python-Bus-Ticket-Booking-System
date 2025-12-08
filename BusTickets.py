@@ -117,6 +117,32 @@ def customer_interface(data):
     else:
         print("Purchase cancelled")
 
+
+        
+# Admin interface program
+
+def admin_interface(data):
+    print("~*~*~*~*~ ADMIN PANEL ~*~*~*~*~")
+
+#Display all tickets with prices
+    for i, row in enumerate(data):
+        print(f"{i}. {row['topup_title']} - {row['topup_price_in_pence']} pence")
+
+    try:
+        idx = int(input("Choose ticket number to edit: "))
+        new_price_pounds = float(input("Enter new price in pounds(£): ")) #creating new price
+    except:
+        print("Invalid choice. Please try one more time.") #wrong choice message
+        return
+
+    new_price_pence = int(new_price_pounds * 100) # convert new price from pound to pence
+
+    data[idx]["topup_price_in_pence"] = str(new_price_pence)
+    print("Pice updated!")
+    save_data(data)
+
+        
+
 #Main menu
 
 def main():
