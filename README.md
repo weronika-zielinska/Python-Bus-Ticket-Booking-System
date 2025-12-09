@@ -31,6 +31,8 @@ User will have a choice:
  
 
  # Case 2 - admin interface
+
+ # Part 1 of case 2 - create admin interface to change a price
  On the start user will have options to choose between client and admin. 
  If he ask about admin then will need provide password. 
  Password is 'admin123' - will create new document with this password and add it to my github, to be able to open and check the password. 
@@ -38,7 +40,9 @@ User will have a choice:
  He need provide price in pounds so i will create function to calculate it in pence and add to document. 
  After admin will recive message "Price is change! thank you". 
 
-
+# Part 2 of case 2 
+Create a csv file sale_list.csv, and def save_data to save informations about sold ticket. 
+I dont want make it in a loop and check first if file exist so create two separate def. One to create headings in new document, and second one to write data there. 
  
  
  
