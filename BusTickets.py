@@ -20,10 +20,10 @@ def save_data(data):
 
 
 #write headings in new csv
-def init_sales():
-    with open("sale_list.csv","w", newline="") as file:
-        writer - csv.DictWriter(file, fieldnames = ["category", "age_gropu", "price"])
-        writer.writeheader()
+#def init_sales():
+ #   with open("sale_list.csv","w", newline="") as file:
+  #      writer - csv.DictWriter(file, fieldnames = ["category", "age_gropu", "price"])
+   #     writer.writeheader()
 
 # save data in new csv to see sold tickets        
 def save_sale(category, age_group, price):
@@ -35,18 +35,16 @@ def save_sale(category, age_group, price):
             "price": price
             })
 
-#Reading saving data abot sold tickets
+#Showing sales report
 
 def show_sales_report():
-    try:
-        with open(SALES_doc, newline="") as file:
-            reader=scv.DictReader(file)
+    with open(SALES_doc, newline="") as file:
+            reader=csv.DictReader(file)
             sales_data = list(reader)
-    if not sales_data:
-        print("No tickets sold")
-        return
+  
 
-    print(~*~*~*~*~ SALES REPORT ~*~*~*~*~)
+    print("~*~*~*~*~ SALES REPORT ~*~*~*~*~")
+    
     report = {}
 
     for row in sales_data:
@@ -158,8 +156,10 @@ def customer_interface(data):
 
     if end_choice == "1":
         print("Ticket purchased successfully! Thank You!")
+        save_data(data) #not working!
     else:
         print("Purchase cancelled")
+        
 
 
         
