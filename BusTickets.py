@@ -34,7 +34,32 @@ def save_sale(category, age_group, price):
             "age_group": age_group,
             "price": price
             })
-        
+
+#Reading saving data abot sold tickets
+
+def show_sales_report():
+    try:
+        with open(SALES_doc, newline="") as file:
+            reader=scv.DictReader(file)
+            sales_data = list(reader)
+    if not sales_data:
+        print("No tickets sold")
+        return
+
+    print(~*~*~*~*~ SALES REPORT ~*~*~*~*~)
+    report = {}
+
+    for row in sales_data:
+        key = (row["category"], row ["age_group"])
+        report[key] = report.get(key, 0) +1
+
+    for (cat,age), count in summary.items():
+        print(f"{cat} -{age}: sold {count} tickets!")
+        total += count
+
+    print("~*~*~ TOTAL SOLD: {total} TICKETS ~*~*~")
+    
+
 
 # Customer interface program
 
