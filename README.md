@@ -44,6 +44,9 @@ User will have a choice:
 Create a csv file sale_list.csv, and def save_data to save informations about sold ticket. 
 I dont want make it in a loop and check first if file exist so create two separate def. One to create headings in new document, and second one to write data there. 
  
+ # Part 2 of case 2
+
+ create new def to showing sales report. If admin ask for it and csv will be empty he will recive "No tickets sold" in other case program will print informations about sold tickets. 
  
  
 
