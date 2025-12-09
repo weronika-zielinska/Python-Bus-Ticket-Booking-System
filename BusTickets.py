@@ -1,13 +1,15 @@
 import csv
 
-CSV_doc="mobile_products.csv"
+CSV_doc="mobile_products.csv"  #csv with data
+SALES_doc="sale_list.csv"   #new csv
 
 # Load data from CSV
 def load_data():
     with open (CSV_doc) as file:
         reader= csv.DictReader(file)
         return list(reader)
-# save data in csv
+    
+# save data in csv with ticket informations
 
 def save_data(data):
     with open(CSV_doc, "w", newline="") as file:
@@ -15,7 +17,24 @@ def save_data(data):
         writer.writeheader()
         writer.writerows(data)
     print("Data saved successfully!")
-    
+
+
+#write headings in new csv
+def init_sales():
+    with open("sale_list.csv","w", newline="") as file:
+        writer - csv.DictWriter(file, fieldnames = ["category", "age_gropu", "price"])
+        writer.writeheader()
+
+# save data in new csv to see sold tickets        
+def save_sale(category, age_group, price):
+    with open("sale_list.csv", "a", newline="") as file:
+        writer = csv.DictWriter(file,fieldnames=["category", "age_group", "price"])
+        writer.writerow({
+            "category": category,
+            "age_group": age_group,
+            "price": price
+            })
+        
 
 # Customer interface program
 
