@@ -20,10 +20,10 @@ def save_data(data):
 
 
 #write headings in new csv
-#def init_sales():
- #   with open("sale_list.csv","w", newline="") as file:
-  #      writer - csv.DictWriter(file, fieldnames = ["category", "age_gropu", "price"])
-   #     writer.writeheader()
+def init_sales():
+    with open("sale_list.csv","w", newline="") as file:
+        writer = csv.DictWriter(file, fieldnames = ["category", "age_group", "price"])
+        writer.writeheader()
 
 # save data in new csv to see sold tickets        
 def save_sale(category, age_group, price):
@@ -57,7 +57,7 @@ def show_sales_report():
 
     total=0
 
-    for (cat,age), count in summary.items():
+    for (cat,age), count in report.items():
         print(f"{cat} -{age}: sold {count} tickets!")
         total += count
 
@@ -213,6 +213,7 @@ def admin_interface(data):
 
 def main():
     data = load_data()
+    init_sales() 
 
     while True:  #how menu looks
         print("~*~*~*~*~~*~*~*~*~\n~*~*~*~*~ NOTTINGHAM CITY COUNCIL TICKETS ~*~*~*~*~\n~*~*~*~*~~*~*~*~*~")
