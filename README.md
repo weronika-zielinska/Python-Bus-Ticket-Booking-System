@@ -44,10 +44,24 @@ User will have a choice:
 Create a csv file sale_list.csv, and def save_data to save informations about sold ticket. 
 I dont want make it in a loop and check first if file exist so create two separate def. One to create headings in new document, and second one to write data there. 
  
- # Part 2 of case 2
+ # Part 3 of case 2
 
- create new def to showing sales report. If admin ask for it and csv will be empty he will recive "No tickets sold" in other case program will print informations about sold tickets. 
- 
+Create new function to showing sales report. If admin ask for it and csv will be empty he will recive "No tickets sold" in other case program will print informations about sold tickets. 
+also caled function in admin menu as a option "2" to show sales report. The function must not only save the data to a new CSV file, but also ensure that it is retained there for a longer period of time, and not deleted each time the program is closed.
+
+# Case 3 - improvements
+
+# part 1 of case 3
+Improve the way prices are displayed in pounds - by creating the *100 function, the displayed amounts often look wrong.
+
+# part 2 of case 3
+Create new modules for each function and only call them in the main document - this will help organize the program and make it easier to work with 
+
+# part 3 of case 3 
+Improve the visual aspects of the program - add more blank lines to separate text. 
+
+# Case 4 - testing
+Test the program in every possible way and eliminate any problems that may occur. 
  
 
  
