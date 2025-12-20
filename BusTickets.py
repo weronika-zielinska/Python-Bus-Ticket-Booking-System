@@ -27,7 +27,7 @@ def save_data(data):
 
 # save data in new csv to see sold tickets        
 def save_sale(category, age_group, price):
-    with open("sale_list.csv", "a", newline="") as file:
+    with open(SALES_doc, "a", newline="") as file:
         writer = csv.DictWriter(file,fieldnames=["category", "age_group", "price"])
         writer.writerow({
             "category": category,
@@ -178,34 +178,34 @@ def admin_interface(data):
         print("2. Show sales report")
         print("3. Return to main menu")
 
-    answer = input("Choose option: ")
+        answer = input("Choose option: ")
 
     
-    if choice == "1":
-        for i, row in enumerate(data):
-            print(f"{i}. {row['topup_title']} - {row['topup_price_in_pence']} pence")
+        if answer == "1":
+            for i, row in enumerate(data):
+                print(f"{i}. {row['topup_title']} - {row['topup_price_in_pence']} pence")
 
-        try:
-            idx = int(input("Choose ticket number to edit: "))
-            new_price_pounds = float(input("Enter new price in pounds(£): ")) #creating new price
-        except:
-            print("Invalid choice. Please try one more time.") #wrong choice message
-    continue
+            try:
+                idx = int(input("Choose ticket number to edit: "))
+                new_price_pounds = float(input("Enter new price in pounds(£): ")) #creating new price
+            except:
+                print("Invalid choice. Please try one more time.") #wrong choice message
+                continue
 
-    new_price_pence = int(new_price_pounds * 100) # convert new price from pound to pence
+            new_price_pence = int(new_price_pounds * 100) # convert new price from pound to pence
 
-    data[idx]["topup_price_in_pence"] = str(new_price_pence)
-    print("Pice updated!")
-    save_data(data)
+            data[idx]["topup_price_in_pence"] = str(new_price_pence)
+            print("Pice updated!")
+            save_data(data)
 
-    elif choice == "2":
-        show_sales_report()
+        elif answer == "2":
+            show_sales_report()
 
-    elif choice == "3":
-        return
+        elif answer == "3":
+            return
 
-    else:
-        print("Invalid option.")
+        else:
+            print("Invalid option.")
 
         
 
