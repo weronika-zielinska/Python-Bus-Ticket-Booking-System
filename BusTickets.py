@@ -155,8 +155,8 @@ def customer_interface(data):
     end_choice = input("Choose option: ")
 
     if end_choice == "1":
+        save_sale(selected_category,selected_age,price_pounds)
         print("Ticket purchased successfully! Thank You!")
-        save_data(data) #not working!
     else:
         print("Purchase cancelled")
         
