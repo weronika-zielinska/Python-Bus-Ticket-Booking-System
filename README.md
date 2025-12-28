@@ -55,12 +55,15 @@ also caled function in admin menu as a option "2" to show sales report. The func
 Improve the way prices are displayed in pounds - by creating the *100 function, the displayed amounts often look wrong.
 
 # part 2 of case 3
-Create new modules for each function and only call them in the main document - this will help organize the program and make it easier to work with 
+option to purchase a second and subsequent ticket by the same customer.
 
 # part 3 of case 3 
 Improve the visual aspects of the program - add more blank lines to separate text. 
 
-# Case 4 - testing
+# Case 4 - separate modules 
+Create new modules for each function and only call them in the main document - this will help organize the program and make it easier to work with 
+
+# Case 5 - testing
 Test the program in every possible way and eliminate any problems that may occur. 
  
 
