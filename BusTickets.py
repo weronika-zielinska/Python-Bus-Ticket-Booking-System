@@ -55,13 +55,13 @@ def show_sales_report():
         key = (row["category"], row ["age_group"])
         report[key] = report.get(key, 0) +1
 
-    total=0
+    total = 0
 
     for (cat,age), count in report.items():
         print(f"{cat} -{age}: sold {count} tickets!")
         total += count
 
-    print("~*~*~ TOTAL SOLD: {total} TICKETS ~*~*~")
+    print(f"~*~*~ TOTAL SOLD: {total} TICKETS ~*~*~")
     
 
 
