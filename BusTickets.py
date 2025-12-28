@@ -75,103 +75,110 @@ def show_sales_report():
 # Customer interface program
 
 def customer_interface(data):
-    print("~*~*~*~*~ CUSTOMER TICKET PURCHASE ~*~*~*~*~")
+    while True:
+        print("~*~*~*~*~ CUSTOMER TICKET PURCHASE ~*~*~*~*~")
 
 #Choosing tickets by category
-    categories={}
-    for row in data:
-          title = row["category_title"]
-          desc = row["category_description"]
-          if title not in categories:
-              categories[title]=desc
+        categories={}
+        for row in data:
+              title = row["category_title"]
+              desc = row["category_description"]
+              if title not in categories:
+                  categories[title]=desc
           
-    print("Available ticket options:")
-    category_list=list(categories.keys())
+        print("Available ticket options:")
+        category_list=list(categories.keys())
 
-    for i, cat in enumerate(category_list):
-          print(f"{i}.{cat}")
-          print(f"   {categories[cat]}")
-          print()
-    try:
-        choice_cat = int(input("Choose category number: ")) #user input1
-        selected_category = category_list [choice_cat] #showing available options
-    except:
-        print("Invalid choice. Please try one more time.") #wrong choice answer
-        return
-    print(f"You selected: {selected_category}") #showing which category choose
+        for i, cat in enumerate(category_list):
+              print(f"{i}.{cat}")
+              print(f"   {categories[cat]}")
+              print()
+        try:
+            choice_cat = int(input("Choose category number: ")) #user input1
+            selected_category = category_list [choice_cat] #showing available options
+        except:
+            print("Invalid choice. Please try one more time.") #wrong choice answer
+            return
+        print(f"You selected: {selected_category}") #showing which category choose
 
 # Choose age type of ticket
 
-    age_groups = set()
-    for row in data:
-        if row["category_title"] == selected_category:
-               age_groups.add(row["topup_passenger_class_name"])
+        age_groups = set()
+        for row in data:
+            if row["category_title"] == selected_category:
+                   age_groups.add(row["topup_passenger_class_name"])
 
-    age_groups = sorted(list(age_groups))
+        age_groups = sorted(list(age_groups))
 
-    print("selected passenger type:") #age options form csv
-    for i, ag in enumerate(age_groups):
+        print("selected passenger type:") #age options form csv
+        for i, ag in enumerate(age_groups):
                print(f"{i}. {ag}")
-    try:
-        choice_age = int(input("Choose passenger type numer: "))  #user input age option
-        selected_age = age_groups[choice_age]
-    except:
-        print("Invalid choice. Try one more time") #invalid input answer
-        return
+        try:
+            choice_age = int(input("Choose passenger type numer: "))  #user input age option
+            selected_age = age_groups[choice_age]
+        except:
+            print("Invalid choice. Try one more time") #invalid input answer
+            return
 
-    print(f"You selected: {selected_age}")  #showing selected option
+        print(f"You selected: {selected_age}")  #showing selected option
 
 
 # Choosing specyfic option of ticket
 
-    ticket_options= [] #storage options
-    for row in data:
-        if row["category_title"] ==  selected_category and row["topup_passenger_class_name"] == selected_age:
-         ticket_options.append(row)
+        ticket_options= [] #storage options
+        for row in data:
+            if row["category_title"] ==  selected_category and row["topup_passenger_class_name"] == selected_age:
+             ticket_options.append(row)
 
-    if not ticket_options: #wrong choice answer
-        print("Sorry, no tickets available for this category and passenger type.")
-        return
+        if not ticket_options: #wrong choice answer
+            print("Sorry, no tickets available for this category and passenger type.")
+            return
 
-    print("Available ticket options:")
+        print("Available ticket options:")
 
-    for i, row in enumerate(ticket_options): #printing options
-        print(f"{i}.{row['topup_title']}")  
+        for i, row in enumerate(ticket_options): #printing options
+            print(f"{i}.{row['topup_title']}")  
         
-        if "topup_description" in row and row["topup_description"]:
-            print(f"       {row['topup_description']}") #printing option descriptions
-        print()
+            if "topup_description" in row and row["topup_description"]:
+                print(f"       {row['topup_description']}") #printing option descriptions
+            print()
             
-    try:
-        choice_ticket = int(input("Choose ticket numer:")) #user input2
-        selected_ticket=ticket_options[choice_ticket]
-    except:
-        print("Invalid choice.") #wrong choice answer
-        return
+        try:
+            choice_ticket = int(input("Choose ticket numer:")) #user input2
+            selected_ticket=ticket_options[choice_ticket]
+        except:
+            print("Invalid choice.") #wrong choice answer
+            return
     
 #show price of choosen ticket in pounds
-    price_pence = int(selected_ticket["topup_price_in_pence"])
-    price_pounds = price_pence/100
+        price_pence = int(selected_ticket["topup_price_in_pence"])
+        price_pounds = price_pence/100
 
-    print("~*~*~*~*~ FINAL TICKET SUMMARY~*~*~*~*~")
-    print(f"Category: {selected_category}")
-    print(f"Passenger type: {selected_age}")
-    print(f"Ticket: {selected_ticket['topup_title']}")
-    print(f"Price: £{price_pounds:.2f}")
-    print("~*~*~*~*~*~**~*~*~*~*~*~*~*~*~*~*~")
+        print("~*~*~*~*~ FINAL TICKET SUMMARY~*~*~*~*~")
+        print(f"Category: {selected_category}")
+        print(f"Passenger type: {selected_age}")
+        print(f"Ticket: {selected_ticket['topup_title']}")
+        print(f"Price: £{price_pounds:.2f}")
+        print("~*~*~*~*~*~**~*~*~*~*~*~*~*~*~*~*~")
 
 #Buying or cancel
 
-    print("1. Buy ticket")
-    print("2. Cancel")
+        print("1. Buy ticket")
+        print("2. Cancel")
 
-    end_choice = input("Choose option: ")
+        end_choice = input("Choose option: ")
 
-    if end_choice == "1":
-        save_sale(selected_category,selected_age,price_pounds)
-        print("Ticket purchased successfully! Thank You!")
-    else:
-        print("Purchase cancelled")
+        if end_choice == "1":
+            save_sale(selected_category,selected_age,price_pounds)
+            print("Ticket purchased successfully! Thank You!")
+        else:
+            print("Purchase cancelled")
+
+        again = input ("Do you want to buy another ticket? (y/n): ").lower()
+
+        if again != "y":
+            print("returning to main menu...")
+        break
         
 
 
