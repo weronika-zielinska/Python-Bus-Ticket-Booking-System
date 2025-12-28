@@ -157,7 +157,7 @@ def customer_interface(data):
     print(f"Category: {selected_category}")
     print(f"Passenger type: {selected_age}")
     print(f"Ticket: {selected_ticket['topup_title']}")
-    print(f"Price: £{price_pounds:2f}")
+    print(f"Price: £{price_pounds:.2f}")
     print("~*~*~*~*~*~**~*~*~*~*~*~*~*~*~*~*~")
 
 #Buying or cancel
