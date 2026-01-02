@@ -1,6 +1,8 @@
 import csv
 import os
 
+
+
 CSV_doc="mobile_products.csv"  #csv with data
 SALES_doc="sale_list.csv"   #new csv
 
@@ -17,7 +19,7 @@ def save_data(data):
         writer=csv.DictWriter(file,fieldnames=data[0].keys())
         writer.writeheader()
         writer.writerows(data)
-    print("Data saved successfully!")
+    print("                Data saved successfully!")
 
 
 #write headings in new csv - can use to manual clear csv doc, but dont need it anymore, becouse this one clear my csv everytime when i close program. 
@@ -52,9 +54,11 @@ def show_sales_report():
     if not sales_data:
         print("No sales recorded yet!")
         return
+
+    BAR_CHAR = "█"
   
     print("\n" + "=" * 80)
-    print("      ~*~*~*~*~*~*~*~*~*~ SALES REPORT ~*~*~*~*~*~*~*~*~*~")
+    print("       ~*~*~*~*~*~*~*~*~*~ SALES REPORT ~*~*~*~*~*~*~*~*~*~")
     print("=" * 80 + "\n")
     
     report = {}
@@ -65,19 +69,25 @@ def show_sales_report():
 
     total = 0
 
+    LABEL_WIDTH = 60 #to control where bar its starting
+    
+
     for (cat,age), count in report.items():
-        print(f"{cat} -{age}: sold {count} tickets!")
+        label ="\n" + f"{cat} - {age}: sold {count} tickets"
+        bar = BAR_CHAR * count
+        print(f"{label:<{LABEL_WIDTH}} | {bar}")
+
         total += count
 
-    print(f"~*~*~ TOTAL SOLD: {total} TICKETS ~*~*~")
+    print("\n" + "\n" + f"<<>><<>><<>><<>><<>>  TOTAL SOLD: {total} TICKETS <<>><<>><<>><<>><<>> ")
 
 
-#Visual functions
+#Visual functions to future use
 
 #def title(text):
- #   print("\n" + "=" * 50)
-  #  print(text.center(50))
-   # print("=" * 50 + "\n")
+ #   print("\n" + "=" * 80)
+  #  print(text.center(80))
+   # print("=" * 80 + "\n")
     
 
 
@@ -188,7 +198,7 @@ def customer_interface(data):
             print("\n" + "=" * 80)
             print("~*~*~ Ticket purchased successfully! Thank You! ~*~*~")
             print("=" * 80)
-            print("""
+            print(r"""
 +----------------------+
 |     BUS TICKET       |
 |----------------------|
@@ -204,7 +214,7 @@ def customer_interface(data):
         if again == "y":
             continue
         else:
-            print("""
+            print(r"""
 
   _____                                    ___
     |   |   |    /\    |\   | | /   \   / |   | |   | |
@@ -230,16 +240,16 @@ def admin_interface(data):
         print("2. Show sales report")
         print("3. Return to main menu")
 
-        answer = input("Choose option: ")
+        answer = input("\n" + "Choose option: ")
 
     
         if answer == "1":
             for i, row in enumerate(data):
-                print(f"{i}. {row['topup_title']} - {row['topup_price_in_pence']} pence")
+                print("\n" + f"{i}. {row['topup_title']} - {row['topup_price_in_pence']} pence")
 
             try:
-                idx = int(input("Choose ticket number to edit: "))
-                new_price_pounds = float(input("Enter new price in pounds(£): ")) #creating new price
+                idx = int(input("\n" + "Please choose ticket number to edit: "))
+                new_price_pounds = float(input("\n" + "Enter new price in pounds(£): ")) #creating new price
             except:
                 print("Invalid choice. Please try one more time.") #wrong choice message
                 continue
@@ -247,7 +257,8 @@ def admin_interface(data):
             new_price_pence = int(new_price_pounds * 100) # convert new price from pound to pence
 
             data[idx]["topup_price_in_pence"] = str(new_price_pence)
-            print("Pice updated!")
+            print("\n" + "=" * 80)
+            print("<<>><<>><<>><<>><<>> Pice updated! <<>><<>><<>><<>><<>>" + "\n")
             save_data(data)
 
         elif answer == "2":
@@ -271,7 +282,7 @@ def main():
         print("\n" + "=" * 80)
         print("      ~*~*~*~*~*~*~*~*~*~ NOTTINGHAM CITY COUNCIL TICKETS ~*~*~*~*~*~*~*~*~*~")
         print("=" * 80)
-        print("""                            _______________________
+        print(r"""                            _______________________
                            |   |  |  |  |  |   |   |
                            |___|__|__|__|__|___|___|
                            |  _     CITY BUS    _  |
@@ -289,7 +300,7 @@ def main():
         if choice == "1":
             customer_interface(data)  #go to customer interface
         elif choice == "2": #go to admin interface
-            password = input("Ender admin passwors: ")
+            password = input("\n" + "Ender admin password: ")
             if  password == "admin123":  #admn password
                 admin_interface(data)
             else: 
