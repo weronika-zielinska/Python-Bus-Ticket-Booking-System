@@ -176,9 +176,11 @@ def customer_interface(data):
 
         again = input ("Do you want to buy another ticket? (y/n): ").lower()
 
-        if again != "y":
-            print("returning to main menu...")
-        break
+        if again == "y":
+            continue
+        else:
+            print("Thank you! Raturning to main menu...")
+        return
         
 
 
