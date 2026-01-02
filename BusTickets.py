@@ -53,8 +53,9 @@ def show_sales_report():
         print("No sales recorded yet!")
         return
   
-
-    print("~*~*~*~*~ SALES REPORT ~*~*~*~*~")
+    print("\n" + "=" * 80)
+    print("      ~*~*~*~*~*~*~*~*~*~ SALES REPORT ~*~*~*~*~*~*~*~*~*~")
+    print("=" * 80 + "\n")
     
     report = {}
 
@@ -69,6 +70,14 @@ def show_sales_report():
         total += count
 
     print(f"~*~*~ TOTAL SOLD: {total} TICKETS ~*~*~")
+
+
+#Visual functions
+
+#def title(text):
+ #   print("\n" + "=" * 50)
+  #  print(text.center(50))
+   # print("=" * 50 + "\n")
     
 
 
@@ -76,7 +85,9 @@ def show_sales_report():
 
 def customer_interface(data):
     while True:
-        print("~*~*~*~*~ CUSTOMER TICKET PURCHASE ~*~*~*~*~")
+        print("\n" + "=" * 80)
+        print("      ~*~*~*~*~*~*~*~*~*~ CUSTOMER TICKET PURCHASE ~*~*~*~*~*~*~*~*~*~")
+        print("=" * 80 + "\n")
 
 #Choosing tickets by category
         categories={}
@@ -86,7 +97,7 @@ def customer_interface(data):
               if title not in categories:
                   categories[title]=desc
           
-        print("Available ticket options:")
+        print("Available ticket options:" + "\n")
         category_list=list(categories.keys())
 
         for i, cat in enumerate(category_list):
@@ -99,7 +110,7 @@ def customer_interface(data):
         except:
             print("Invalid choice. Please try one more time.") #wrong choice answer
             return
-        print(f"You selected: {selected_category}") #showing which category choose
+        print("\n" + f"You selected: {selected_category}" + "\n") #showing which category choose
 
 # Choose age type of ticket
 
@@ -110,17 +121,17 @@ def customer_interface(data):
 
         age_groups = sorted(list(age_groups))
 
-        print("selected passenger type:") #age options form csv
+        print("Please select passenger type:") #age options form csv
         for i, ag in enumerate(age_groups):
                print(f"{i}. {ag}")
         try:
-            choice_age = int(input("Choose passenger type numer: "))  #user input age option
+            choice_age = int(input("\n" + "Choose passenger type numer: "))  #user input age option
             selected_age = age_groups[choice_age]
         except:
             print("Invalid choice. Try one more time") #invalid input answer
             return
 
-        print(f"You selected: {selected_age}")  #showing selected option
+        print("\n" + f"You selected: {selected_age}" + "\n")  #showing selected option
 
 
 # Choosing specyfic option of ticket
@@ -134,7 +145,7 @@ def customer_interface(data):
             print("Sorry, no tickets available for this category and passenger type.")
             return
 
-        print("Available ticket options:")
+        print("Available ticket options:" + "\n")
 
         for i, row in enumerate(ticket_options): #printing options
             print(f"{i}.{row['topup_title']}")  
@@ -154,12 +165,16 @@ def customer_interface(data):
         price_pence = int(selected_ticket["topup_price_in_pence"])
         price_pounds = price_pence/100
 
-        print("~*~*~*~*~ FINAL TICKET SUMMARY~*~*~*~*~")
+        print("\n" + "=" * 80)
+        print("      ~*~*~*~*~*~*~*~*~*~ FINAL TICKET SUMMARY ~*~*~*~*~*~*~*~*~*~")
+        print("=" * 80 + "\n")
         print(f"Category: {selected_category}")
         print(f"Passenger type: {selected_age}")
         print(f"Ticket: {selected_ticket['topup_title']}")
         print(f"Price: £{price_pounds:.2f}")
-        print("~*~*~*~*~*~**~*~*~*~*~*~*~*~*~*~*~")
+        print("\n" + "=" * 80)
+        print("                ~*~*~*~*~*~*~*~*~*~***~*~*~*~*~*~*~*~*~*~*~")
+        print("=" * 80 + "\n")
 
 #Buying or cancel
 
@@ -170,7 +185,17 @@ def customer_interface(data):
 
         if end_choice == "1":
             save_sale(selected_category,selected_age,price_pounds)
-            print("Ticket purchased successfully! Thank You!")
+            print("\n" + "=" * 80)
+            print("~*~*~ Ticket purchased successfully! Thank You! ~*~*~")
+            print("=" * 80)
+            print("""
++----------------------+
+|     BUS TICKET       |
+|----------------------|
+|     NOTTINGHAM       |
+|   HAVE A NICE TRIP!  |
++----------------------+
+""")
         else:
             print("Purchase cancelled")
 
@@ -179,7 +204,16 @@ def customer_interface(data):
         if again == "y":
             continue
         else:
-            print("Thank you! Raturning to main menu...")
+            print("""
+
+  _____                                    ___
+    |   |   |    /\    |\   | | /   \   / |   | |   | |
+    |   |___|   /  \   | \  | |/     \ /  |   | |   | |
+    |   |   |  /----\  |  \ | |\      |   |   | |   | |
+    |   |   | /      \ |   \| | \     |   |___| |___| O
+""")   
+
+            print(" Raturning to main menu...")
         return
         
 
@@ -189,7 +223,9 @@ def customer_interface(data):
 
 def admin_interface(data):
     while True:
-        print("~*~*~*~*~ ADMIN PANEL ~*~*~*~*~")
+        print("\n" + "=" * 80)
+        print("         ~*~*~*~*~*~*~*~*~*~ ADMIN PANEL ~*~*~*~*~*~*~*~*~*~")
+        print("=" * 80 + "\n")
         print("1. Edit ticket price")
         print("2. Show sales report")
         print("3. Return to main menu")
@@ -232,7 +268,18 @@ def main():
    # init_sales() - probably dont need it anymore 
 
     while True:  #how menu looks
-        print("~*~*~*~*~~*~*~*~*~\n~*~*~*~*~ NOTTINGHAM CITY COUNCIL TICKETS ~*~*~*~*~\n~*~*~*~*~~*~*~*~*~")
+        print("\n" + "=" * 80)
+        print("      ~*~*~*~*~*~*~*~*~*~ NOTTINGHAM CITY COUNCIL TICKETS ~*~*~*~*~*~*~*~*~*~")
+        print("=" * 80)
+        print("""                            _______________________
+                           |   |  |  |  |  |   |   |
+                           |___|__|__|__|__|___|___|
+                           |  _     CITY BUS    _  |
+                           | | |   _________   | | |_
+                           | |_|  |         |  |_|   |
+                           |_____|_|_______|_|_______|
+                              O                 O
+""")
         print("1. CUSTOMER - buy ticket")
         print("2. ADMIN - log in")
         print("3. Exit")
