@@ -120,7 +120,7 @@ def customer_interface(data):
                 selected_category = category_list [choice_cat] #showing available options
                 break
             except:
-                print("\n" + "❌ Invalid choice. Please try one more time." + "\n") #wrong choice answer
+                print("\n" + "  ❌ Invalid choice. Please try one more time." + "\n") #wrong choice answer
             
         print("\n" + f"You selected: {selected_category}" + "\n") #showing which category choose
 
@@ -142,7 +142,7 @@ def customer_interface(data):
                 selected_age = age_groups[choice_age]
                 break
             except:
-                print("\n" + "❌ Invalid choice. Please try one more time." + "\n") #invalid input answer
+                print("\n" + "  ❌ Invalid choice. Please try one more time." + "\n") #invalid input answer
                 
         print("\n" + f"You selected: {selected_age}" + "\n")  #showing selected option
 
@@ -173,7 +173,7 @@ def customer_interface(data):
                 selected_ticket=ticket_options[choice_ticket]
                 break
             except:
-                print("\n" + "❌ Invalid choice. Please try one more time." + "\n") #wrong choice answer
+                print("\n" + "  ❌ Invalid choice. Please try one more time." + "\n") #wrong choice answer
                 
     
 #show price of choosen ticket in pounds
@@ -250,18 +250,26 @@ def admin_interface(data):
             if answer in ("1", "2", "3"):
                 break
             else:
-                print("❌ Invalid choice. Please try one more time.")
+                print("  ❌ Invalid choice. Please try one more time.")
     
         if answer == "1":
             for i, row in enumerate(data):
                 print("\n" + f"{i}. {row['topup_title']} - {row['topup_price_in_pence']} pence")
 
-            try:
-                idx = int(input("\n" + "Please choose ticket number to edit: "))
-                new_price_pounds = float(input("\n" + "Enter new price in pounds(£): ")) #creating new price
-            except:
-                print("❌ Invalid choice. Please try one more time.") #wrong choice message
-                continue
+            while True:
+                try:
+                    idx = int(input("\n" + "Please choose ticket number to edit: "))
+
+                    if idx < 0 or idx >= len(data):
+                        print(f"  ❌ Ticket number out of the range. Please select again (0-{len(data)-1}).")
+                        continue
+                
+                    new_price_pounds = float(input("\n" + "Enter new price in pounds(£): ")) #creating new price
+                    break
+                
+                except ValueError:
+                    print(f"  ❌ Invalid choice. Please select number (0-{len(data)-1}).") #wrong choice message
+                    continue
 
             new_price_pence = int(new_price_pounds * 100) # convert new price from pound to pence
 
@@ -277,7 +285,7 @@ def admin_interface(data):
             return
 
         else:
-            print("❌ Invalid choice. Please try one more time.")
+            print("  ❌ Invalid choice. Please try one more time.")
 
         
 
@@ -310,7 +318,7 @@ def main():
             if choice in("1", "2", "3"):
                 break
             else:
-                print("\n" + "❌ Invalid choice. Please try one more time.")
+                print("\n" + "  ❌ Invalid choice. Please try one more time.")
 
         if choice == "1":
             customer_interface(data)  #go to customer interface
@@ -335,7 +343,7 @@ def main():
                     print("Returning to main menu...")
                     break
                 else: 
-                    print("\n" + "❌ Invalid password. Please try one more time.") # invalid password
+                    print("\n" + "  ❌ Invalid password. Please try one more time.") # invalid password
 
         elif choice =="3":
             print("\n" + " ============  ***  Goodbye!!  ***  =========== ")
