@@ -245,8 +245,12 @@ def admin_interface(data):
         print("2. Show sales report")
         print("3. Return to main menu")
 
-        answer = input("\n" + "Choose option: ")
-
+        while True:
+            answer = input("\n" + "Choose option: ")
+            if answer in ("1", "2", "3"):
+                break
+            else:
+                print("❌ Invalid choice. Please try one more time.")
     
         if answer == "1":
             for i, row in enumerate(data):
@@ -256,14 +260,14 @@ def admin_interface(data):
                 idx = int(input("\n" + "Please choose ticket number to edit: "))
                 new_price_pounds = float(input("\n" + "Enter new price in pounds(£): ")) #creating new price
             except:
-                print("Invalid choice. Please try one more time.") #wrong choice message
+                print("❌ Invalid choice. Please try one more time.") #wrong choice message
                 continue
 
             new_price_pence = int(new_price_pounds * 100) # convert new price from pound to pence
 
             data[idx]["topup_price_in_pence"] = str(new_price_pence)
             print("\n" + "=" * 80)
-            print("<<>><<>><<>><<>><<>> Pice updated! <<>><<>><<>><<>><<>>" + "\n")
+            print("<<>><<>><<>><<>><<>> ✔️ Pice updated! <<>><<>><<>><<>><<>>" + "\n")
             save_data(data)
 
         elif answer == "2":
@@ -273,7 +277,7 @@ def admin_interface(data):
             return
 
         else:
-            print("Invalid option.")
+            print("❌ Invalid choice. Please try one more time.")
 
         
 
@@ -334,13 +338,7 @@ def main():
                     print("\n" + "❌ Invalid password. Please try one more time.") # invalid password
 
         elif choice =="3":
-            print("""
-+----------------------+
-|                      |
-|       Goodbye!!      |
-|                      |
-+----------------------+
-""")
+            print("\n" + " ============  ***  Goodbye!!  ***  =========== ")
 
             break
         
