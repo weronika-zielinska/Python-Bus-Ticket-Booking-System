@@ -228,7 +228,7 @@ def customer_interface(data):
     |   |   | /      \ |   \| | \     |   |___| |___| O
 """)   
 
-            print(" Raturning to main menu...")
+            print(" Returning to main menu...")
         return
         
 
@@ -306,7 +306,7 @@ def main():
             if choice in("1", "2", "3"):
                 break
             else:
-                print("\n" + "❌ Invalid selection. Please try one more time.")
+                print("\n" + "❌ Invalid choice. Please try one more time.")
 
         if choice == "1":
             customer_interface(data)  #go to customer interface
@@ -318,8 +318,7 @@ def main():
                 if  password == "admin123":  #admin password
                     admin_interface(data)
                     break
-
-                elif password.lower() == "X":
+                elif password.lower() == "x":
                     print(r"""
 
   _____                                    ___
@@ -329,7 +328,7 @@ def main():
     |   |   | /      \ |   \| | \     |   |___| |___| O
 """)   
 
-                    print(" Raturning to main menu...")
+                    print("Returning to main menu...")
                     break
                 else: 
                     print("\n" + "❌ Invalid password. Please try one more time.") # invalid password
