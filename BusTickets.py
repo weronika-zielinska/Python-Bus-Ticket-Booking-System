@@ -300,21 +300,51 @@ def main():
         print("2. ADMIN - log in")
         print("3. Exit")
 
-        choice = input("Select option:")
+        while True:
+            choice = input("Select option:")
+
+            if choice in("1", "2", "3"):
+                break
+            else:
+                print("\n" + "❌ Invalid selection. Please try one more time.")
 
         if choice == "1":
             customer_interface(data)  #go to customer interface
+            
         elif choice == "2": #go to admin interface
-            password = input("\n" + "Ender admin password: ")
-            if  password == "admin123":  #admn password
-                admin_interface(data)
-            else: 
-                print("Invalid password.") # invalid password
+            while True:
+                password = input("\n" + "Enter admin password (or X for cancel):")
+                
+                if  password == "admin123":  #admin password
+                    admin_interface(data)
+                    break
+
+                elif password.lower() == "X":
+                    print(r"""
+
+  _____                                    ___
+    |   |   |    /\    |\   | | /   \   / |   | |   | |
+    |   |___|   /  \   | \  | |/     \ /  |   | |   | |
+    |   |   |  /----\  |  \ | |\      |   |   | |   | |
+    |   |   | /      \ |   \| | \     |   |___| |___| O
+""")   
+
+                    print(" Raturning to main menu...")
+                    break
+                else: 
+                    print("\n" + "❌ Invalid password. Please try one more time.") # invalid password
+
         elif choice =="3":
-            print("Goodbye!")
+            print("""
++----------------------+
+|                      |
+|       Goodbye!!      |
+|                      |
++----------------------+
+""")
+
             break
-        else:
-            print("Invalid selection. Try one more time")
+        
 
 if __name__ == "__main__":
     main()
