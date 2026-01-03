@@ -31,7 +31,7 @@ def admin_interface(data):
                         print(f"  ❌ Ticket number out of the range. Please select again (0-{len(data)-1}).")
                         continue
                 
-                    new_price_pounds = float(input("\n" + "Enter new price in pounds(£): ")) #creating new price
+                    new_price_pounds = float(input("\n" + "Enter new price in pounds (£ - Use a number with a dot for decimal):")) #creating new price
                     break
                 
                 except ValueError:
