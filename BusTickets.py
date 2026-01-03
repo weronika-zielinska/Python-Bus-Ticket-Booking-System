@@ -114,12 +114,14 @@ def customer_interface(data):
               print(f"{i}.{cat}")
               print(f"   {categories[cat]}")
               print()
-        try:
-            choice_cat = int(input("Choose category number: ")) #user input1
-            selected_category = category_list [choice_cat] #showing available options
-        except:
-            print("Invalid choice. Please try one more time.") #wrong choice answer
-            return
+        while True:
+            try:
+                choice_cat = int(input("Choose category number: ")) #user input1
+                selected_category = category_list [choice_cat] #showing available options
+                break
+            except:
+                print("\n" + "❌ Invalid choice. Please try one more time." + "\n") #wrong choice answer
+            
         print("\n" + f"You selected: {selected_category}" + "\n") #showing which category choose
 
 # Choose age type of ticket
@@ -134,13 +136,14 @@ def customer_interface(data):
         print("Please select passenger type:") #age options form csv
         for i, ag in enumerate(age_groups):
                print(f"{i}. {ag}")
-        try:
-            choice_age = int(input("\n" + "Choose passenger type numer: "))  #user input age option
-            selected_age = age_groups[choice_age]
-        except:
-            print("Invalid choice. Try one more time") #invalid input answer
-            return
-
+        while True:
+            try:
+                choice_age = int(input("\n" + "Choose passenger type numer: "))  #user input age option
+                selected_age = age_groups[choice_age]
+                break
+            except:
+                print("\n" + "❌ Invalid choice. Please try one more time." + "\n") #invalid input answer
+                
         print("\n" + f"You selected: {selected_age}" + "\n")  #showing selected option
 
 
@@ -164,12 +167,14 @@ def customer_interface(data):
                 print(f"       {row['topup_description']}") #printing option descriptions
             print()
             
-        try:
-            choice_ticket = int(input("Choose ticket numer:")) #user input2
-            selected_ticket=ticket_options[choice_ticket]
-        except:
-            print("Invalid choice.") #wrong choice answer
-            return
+        while True:
+            try:
+                choice_ticket = int(input("Choose ticket numer:")) #user input2
+                selected_ticket=ticket_options[choice_ticket]
+                break
+            except:
+                print("\n" + "❌ Invalid choice. Please try one more time." + "\n") #wrong choice answer
+                
     
 #show price of choosen ticket in pounds
         price_pence = int(selected_ticket["topup_price_in_pence"])
@@ -207,7 +212,7 @@ def customer_interface(data):
 +----------------------+
 """)
         else:
-            print("Purchase cancelled")
+            print("\n" + "❌ ❌ ❌ Purchase cancelled ❌ ❌ ❌" + "\n")
 
         again = input ("Do you want to buy another ticket? (y/n): ").lower()
 
