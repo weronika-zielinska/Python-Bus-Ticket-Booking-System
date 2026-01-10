@@ -3,7 +3,7 @@ from sales import show_sales_report
 
 # Admin interface program
 
-def admin_interface(data):
+def admin_interface(data): #admin interface menu after log in
     while True:
         print("\n" + "=" * 80)
         print("         ~*~*~*~*~*~*~*~*~*~ ADMIN PANEL ~*~*~*~*~*~*~*~*~*~")
@@ -17,24 +17,24 @@ def admin_interface(data):
             if answer in ("1", "2", "3"):
                 break
             else:
-                print("  ❌ Invalid choice. Please try one more time.")
+                print("  ❌ Invalid choice. Please try one more time.") #invalid choice
     
-        if answer == "1":
+        if answer == "1":  #show all ticket options to change prices
             for i, row in enumerate(data):
                 print("\n" + f"{i}. {row['topup_title']} - {row['topup_price_in_pence']} pence")
 
-            while True:
+            while True:  # choice ticket to change price
                 try:
                     idx = int(input("\n" + "Please choose ticket number to edit: "))
 
-                    if idx < 0 or idx >= len(data):
+                    if idx < 0 or idx >= len(data): #if its out of range (count postitions from excel)
                         print(f"  ❌ Ticket number out of the range. Please select again (0-{len(data)-1}).")
                         continue
-                
+                        #new price setting
                     new_price_pounds = float(input("\n" + "Enter new price in pounds (£ - Use a number with a dot for decimal):")) #creating new price
-                    break
+                    break 
                 
-                except ValueError:
+                except ValueError: #any diffrent answer than number
                     print(f"  ❌ Invalid choice. Please select number (0-{len(data)-1}).") #wrong choice message
                     continue
 
@@ -45,11 +45,11 @@ def admin_interface(data):
             print("<<>><<>><<>><<>><<>> ✔️ Pice updated! <<>><<>><<>><<>><<>>" + "\n")
             save_data(data)
 
-        elif answer == "2":
+        elif answer == "2": # go to show sales function
             show_sales_report()
 
-        elif answer == "3":
+        elif answer == "3": #return to main menu interface
             return
 
         else:
-            print("  ❌ Invalid choice. Please try one more time.")
+            print("  ❌ Invalid choice. Please try one more time.") #if wrong choice

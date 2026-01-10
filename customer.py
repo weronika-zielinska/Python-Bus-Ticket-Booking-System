@@ -3,7 +3,7 @@ from data_things import save_sale
 
 # Customer interface program
 
-def customer_interface(data):
+def customer_interface(data): #customer interface menu
     while True:
         print("\n" + "=" * 80)
         print("      ~*~*~*~*~*~*~*~*~*~ CUSTOMER TICKET PURCHASE ~*~*~*~*~*~*~*~*~*~")
@@ -57,18 +57,18 @@ def customer_interface(data):
         print("\n" + f"You selected: {selected_age}" + "\n")  #showing selected option
 
 
-# Choosing specyfic option of ticket
+# Choosing specyfic option of ticket like bundles/ single trip/ 24h etc.
 
         ticket_options= [] #storage options
         for row in data:
             if row["category_title"] ==  selected_category and row["topup_passenger_class_name"] == selected_age:
              ticket_options.append(row)
 
-        if not ticket_options: #wrong choice answer
+        if not ticket_options: #answer if there is no options for choosen category
             print("Sorry, no tickets available for this category and passenger type.")
             return
 
-        print("Available ticket options:" + "\n")
+        print("Available ticket options:" + "\n") 
 
         for i, row in enumerate(ticket_options): #printing options
             print(f"{i}.{row['topup_title']}")  
@@ -93,10 +93,10 @@ def customer_interface(data):
         print("\n" + "=" * 80)
         print("      ~*~*~*~*~*~*~*~*~*~ FINAL TICKET SUMMARY ~*~*~*~*~*~*~*~*~*~")
         print("=" * 80 + "\n")
-        print(f"Category: {selected_category}")
-        print(f"Passenger type: {selected_age}")
-        print(f"Ticket: {selected_ticket['topup_title']}")
-        print(f"Price: £{price_pounds:.2f}")
+        print(f"Category: {selected_category}") #print type of ticket
+        print(f"Passenger type: {selected_age}") #print age category
+        print(f"Ticket: {selected_ticket['topup_title']}") #print details of ticket
+        print(f"Price: £{price_pounds:.2f}") #.2f for two places after decimal
         print("\n" + "=" * 80)
         print("                ~*~*~*~*~*~*~*~*~*~***~*~*~*~*~*~*~*~*~*~*~")
         print("=" * 80 + "\n")
@@ -108,7 +108,7 @@ def customer_interface(data):
 
         end_choice = input("Choose option: ")
 
-        if end_choice == "1":
+        if end_choice == "1": #if customer buy the ticket
             save_sale(selected_category,selected_age,price_pounds)
             print("\n" + "=" * 80)
             print("~*~*~ Ticket purchased successfully! Thank You! ~*~*~")
@@ -122,11 +122,11 @@ def customer_interface(data):
 +----------------------+
 """)
         else:
-            print("\n" + "❌ ❌ ❌ Purchase cancelled ❌ ❌ ❌" + "\n")
+            print("\n" + "❌ ❌ ❌ Purchase cancelled ❌ ❌ ❌" + "\n") #if cancelled
 
         again = input ("Do you want to buy another ticket? (y/n): ").lower()
 
-        if again == "y":
+        if again == "y": #chance to buy another ticket
             continue
         else:
             print(r"""

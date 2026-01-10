@@ -5,7 +5,7 @@ import os
 CSV_doc="mobile_products.csv"  #csv with data
 SALES_doc="sale_list.csv"   #new csv
 
-# Load data from CSV
+# Load data from CSV with available tickets
 def load_data():
     try:
         with open (CSV_doc) as file:
@@ -19,7 +19,7 @@ def load_data():
         print("\n" + f"  ❌ Error reading {CSV_doc}: {e}") #will show saved error as e
         return[]
     
-# save data in csv with ticket informations
+# save data in csv with ticket informations (ater price change)
 
 def save_data(data):
     try:
