@@ -124,12 +124,13 @@ def customer_interface(data): #customer interface menu
         else:
             print("\n" + "❌ ❌ ❌ Purchase cancelled ❌ ❌ ❌" + "\n") #if cancelled
 
-        again = input ("Do you want to buy another ticket? (y/n): ").lower()
+        while True: #another ticket option
+            again = input ("Do you want to buy another ticket? (y/n): ").lower()
 
-        if again == "y": #chance to buy another ticket
-            continue
-        else:
-            print(r"""
+            if again == "y": #chance to buy another ticket
+                continue
+            elif again == "n": #back to main menu
+                print(r"""
 
   _____                                    ___
     |   |   |    /\    |\   | | /   \   / |   | |   | |
@@ -138,6 +139,8 @@ def customer_interface(data): #customer interface menu
     |   |   | /      \ |   \| | \     |   |___| |___| O
 """)   
 
-            print(" Returning to main menu...")
-        return
+                print(" Returning to main menu...")
+                return
+            else:
+                print("\n" + "  ❌ Invalid choice, pleasy try one more time (y/n)") #wrong input
         
