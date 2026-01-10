@@ -58,21 +58,15 @@ Improve the way prices are displayed in pounds - by creating the *100 function, 
 option to purchase a second and subsequent ticket by the same customer.
 
 # part 3 of case 3 
-Improve the visual aspects of the program - add more blank lines to separate text. 
+Improve the visual aspects of the program - add more blank lines to separate text. Some "graphic" like bus, ticket or thank you. 
 
 # Case 4 - separate modules 
 Create new modules for each function and only call them in the main document - this will help organize the program and make it easier to work with 
 
 # Case 5 - testing
 Test the program in every possible way and eliminate any problems that may occur. 
- 
-
- 
-
- 
+Adding comments to explain all code elements.
+Fixed issues found, such as returning to the main menu after entering the wrong input instead of giving another chance to respond.
  
 
 
-
-Will create interfce where user can buy a NottinghamTrnsport ticket. 
-User will see welcome message and after options to choose. 
