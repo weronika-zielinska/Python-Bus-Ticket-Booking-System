@@ -10,7 +10,7 @@ from admin import admin_interface
 def main():
     data = load_data()
 
-    while True:  #how menu looks
+    while True:  #how menu interface looks
         print("\n" + "=" * 80)
         print("      ~*~*~*~*~*~*~*~*~*~ NOTTINGHAM CITY COUNCIL TICKETS ~*~*~*~*~*~*~*~*~*~")
         print("=" * 80)
@@ -45,7 +45,7 @@ def main():
                 if  password == "admin123":  #admin password
                     admin_interface(data)
                     break
-                elif password.lower() == "x":
+                elif password.lower() == "x": #ich admin choose x then cancel
                     print(r"""
 
   _____                                    ___
@@ -61,7 +61,7 @@ def main():
                     print("\n" + "  ❌ Invalid password. Please try one more time.") # invalid password
 
         elif choice =="3":
-            print("\n" + " ============  ***  Goodbye!!  ***  =========== ")
+            print("\n" + " ============  ***  Goodbye!!  ***  =========== ") #exit - close program
 
             break
         
