@@ -1,72 +1,98 @@
-# BusTicketsProject
-the user interface for NCTX bus tickets
+# Bus Ticket Booking System – Python
 
-# main - Introduce
-Create welcome message, and choosing interface- main menu
-User will have a choice: 
-1. customer ( to buy ticket)
-2. admin ( to login and change a price of tickets)
-3. exit
+## Project Overview
 
- # case 1 - user interface
+The Bus Ticket Booking System is a console-based Python application developed as part of my BSc (Hons) Software Engineering degree at Nottingham Trent University.
 
-# part 1 of case 1 - choose ticket category 
- Create user interface which appear after choosing 1st option in main menu. 
- After choose 1. Client will recive options from excel document - from category_title column. Also i will add description for each of categories from column category_description. Its 6 options available so customer must choose number between 1-6. If he will put wrong input will recive answer "invalid choice, try one more time".
- After customer choice program will print his choice. 
+The application simulates a ticket sales system for NCTX bus services. Customers can browse available ticket options, select passenger categories, review prices and purchase tickets. An administrator interface provides functionality for managing ticket prices and reviewing sales records.
 
- # part 2 of case 1 - choose age group
- Customer will recive options from excel column topup_passenger_class_name to choice age group. There is 4 available groups: adult, student, under 19, and under 22. Client must choose again numer 1-4 to go ahead. If input its wrong then customer will recive message about it. 
+The project focuses on data handling, input validation, modular programming and persistent storage using CSV files.
 
- # part 3 of case 1 - choose specyfic option of ticket
- Client will recive next options to choose from excel column topup_passenger_class_name with description from topup_description. Programm will show all available optins like bulks options for tickets. Customer must choice one option by puting number. If input its wrong then customer will recive message about it. 
+## Features
 
- # part 4 of case 1 - price of ticket
+### Customer Interface
 
- After all choices customer will recive FINAL TICKET SUMMARY which will contain category, passanger type,type of choosen ticket and price in pounds. 
- They will chooce 2 options - buy or cancel. 
+- Browse available ticket categories and their descriptions.
+- Select a passenger group, including adults, students and younger passengers.
+- View available ticket options and descriptions.
+- Review a ticket summary showing the selected category, passenger type, ticket type and price.
+- Confirm or cancel a purchase.
+- Purchase multiple tickets during one session.
+- Receive a purchase confirmation message.
 
- # part 5 of case 1 - finish
- after bought ticket customer will recive message @ ticket purchased successfully! thank you! and will back to start - main menu. 
- 
+### Administrator Interface
 
- # Case 2 - admin interface
+- Access the administration menu using password authentication.
+- View available ticket options and their current prices.
+- Update ticket prices using amounts entered in pounds.
+- Convert prices between pounds and pence for accurate price handling.
+- View a sales report containing recorded ticket sales.
 
- # Part 1 of case 2 - create admin interface to change a price
- On the start user will have options to choose between client and admin. 
- If he ask about admin then will need provide password. 
- Password is 'admin123' - will create new document with this password and add it to my github, to be able to open and check the password. 
- Admin will recive opion to change a ticket prices. This changes will save in excel data document. 
- He need provide price in pounds so i will create function to calculate it in pence and add to document. 
- After admin will recive message "Price is change! thank you". 
+### Data Management and Reporting
 
-# Part 2 of case 2 
-Create a csv file sale_list.csv, and def save_data to save informations about sold ticket. 
-I dont want make it in a loop and check first if file exist so create two separate def. One to create headings in new document, and second one to write data there. 
- 
- # Part 3 of case 2
+- Load ticket information from CSV files.
+- Save updated ticket prices to a data file.
+- Record completed purchases in `sale_list.csv`.
+- Retain sales records between program sessions.
+- Display recorded sales or indicate when no tickets have been sold.
 
-Create new function to showing sales report. If admin ask for it and csv will be empty he will recive "No tickets sold" in other case program will print informations about sold tickets. 
-also caled function in admin menu as a option "2" to show sales report. The function must not only save the data to a new CSV file, but also ensure that it is retained there for a longer period of time, and not deleted each time the program is closed.
+### User Experience and Validation
 
-# Case 3 - improvements
+- Provide a menu-driven interface with clear instructions.
+- Validate user input and handle invalid selections.
+- Allow users to retry incorrect inputs without unnecessarily restarting the purchase process.
+- Display prices in pounds to two decimal places.
+- Use spacing and simple text-based graphics to improve readability.
 
-# part 1 of case 3
-Improve the way prices are displayed in pounds - by creating the *100 function, the displayed amounts often look wrong.
+## Technologies and Concepts
 
-# part 2 of case 3
-option to purchase a second and subsequent ticket by the same customer.
+- **Language:** Python
+- **Data storage:** CSV files
+- **File handling:** Reading and writing structured data
+- **Programming concepts:** Functions, conditional statements, loops, input validation and error handling
+- **Code organisation:** Modular programming with separate files for customer operations, administration, data management and sales reporting
 
-# part 3 of case 3 
-Improve the visual aspects of the program - add more blank lines to separate text. Some "graphic" like bus, ticket or thank you. 
+## Project Structure
 
-# Case 4 - separate modules 
-Create new modules for each function and only call them in the main document - this will help organize the program and make it easier to work with 
+The application is organised into separate modules to improve readability, maintainability and separation of responsibilities.
 
-# Case 5 - testing
-Test the program in every possible way and eliminate any problems that may occur. 
-Adding comments to explain all code elements.
-Fixed issues found, such as returning to the main menu after entering the wrong input instead of giving another chance to respond.
+| Module | Responsibility |
+|---|---|
+| `BusTickets.py` | Main entry point and menu navigation |
+| `customer.py` | Customer interface and ticket purchasing |
+| `admin.py` | Administrator interface and price management |
+| `data_things.py` | Loading and saving data |
+| `sales.py` | Sales reporting |
+
+The application uses CSV files to store ticket information and maintain a record of completed purchases.
+
+## Learning Outcomes
+
+Developing this project helped me strengthen my Python programming skills and gain practical experience in building a multi-functional console application.
+
+Key areas of learning included:
+
+- Designing interactive user interfaces using menus and input validation.
+- Reading, processing and updating structured data stored in CSV files.
+- Implementing persistent data storage for sales records.
+- Separating program functionality into reusable modules.
+- Testing different user input scenarios and correcting issues.
+- Improving code readability through comments and structured program design.
+
+## How to Run
+
+1. Clone or download this repository.
+2. Open the project in a Python-compatible development environment, such as Visual Studio Code.
+3. Ensure the required Python files and ticket data CSV file are present.
+4. Run `BusTickets.py` to launch the application.
+5. Follow the on-screen instructions to access the customer or administrator interface.
+
+## Academic Project
+
+Developed as part of the BSc (Hons) Software Engineering course at Nottingham Trent University.
+
+
+----------------------------------------------------------------------------------------------
  
 # Work Plan/ Module diagram/ class diagrams
 work plan:
